@@ -1,0 +1,32 @@
+/* Solution: Correcting calc() usage */
+
+/* Correct way to use calc() in nested elements:  Using a variable to store the percentage calculation and applying that to the nested elements. */
+:root {
+  --container-width: calc(100% - 20px);
+}
+
+.container {
+  width: var(--container-width);
+}
+
+.nested {
+  width: 50%; /* Works correctly now within the container*/
+}
+
+/* Correct unit compatibility and spacing within calc() */
+.element {
+  width: calc(100px + 20em); /*Correct: Compatible units*/
+  height: calc(50% - 10px); /* Correct: Correct spacing*/
+  /* Incorrect spacing example, corrected above*/
+  /*height:calc( 50%-10px);*/ 
+}
+
+/* Avoid mixing percentages and absolute values directly where percentage may not be relative to the element */
+.element2 {
+  width: 50%; /* correct: percentage works here */
+}
+
+/* Incorrect example:  percentage is relative to the document not the parent element*/
+/*.element2 {
+  width: calc(50% - 10px); /* incorrect: percentage is relative to the document, resulting in unexpected values*/
+}*/
